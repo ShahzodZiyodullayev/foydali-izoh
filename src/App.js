@@ -16,7 +16,7 @@ function App() {
   const [openPopup, setOpenPopup] = React.useState(false);
   const [mark, setMark] = React.useState({});
   const [inputVal, setInputVal] = React.useState("");
-  const [sideData, setSideData] = React.useState("");
+  const [sideData, setSideData] = React.useState(null);
 
   useEffect(() => {
     getLocation();
@@ -126,7 +126,8 @@ function App() {
           background: "#fff",
           boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
           margin: "10px",
-          padding: "10px",
+          padding: sideData === null ? 0 : "10px",
+          transition: "height 1s",
         }}
       >
         {sideData}
