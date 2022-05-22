@@ -24,7 +24,7 @@ function Login() {
     //   // dispatch(setUser("h"));
     //   dispatch(setUser(result.data.data));
     // }
-    await API.get("izoh", "/comments", "1").then((e) => console.log(e));
+    await API.get("izoh", "/comments").then((e) => console.log(e));
   };
 
   return (
