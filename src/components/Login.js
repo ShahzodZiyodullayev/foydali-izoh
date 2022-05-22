@@ -3,6 +3,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import axios from "axios";
 import { setUser } from "./../redux/actions/userActions";
 import { useDispatch } from "react-redux";
+import { API } from "aws-amplify";
 
 function Login() {
   const [password, setPassword] = React.useState("");
@@ -11,19 +12,21 @@ function Login() {
   const dispatch = useDispatch();
 
   const submitBtn = async () => {
-    let result;
-    if (login !== "" && password !== "") {
-      result = await axios.post("http://localhost:5000/hi", {
-        password,
-        login,
-      });
-    }
-    console.log("result: ", result);
-    if (result && result.data && result.data.data) {
-      // dispatch(setUser("h"));
-      dispatch(setUser(result.data.data));
-    }
+    // let result;
+    // if (login !== "" && password !== "") {
+    //   result = await axios.post("http://localhost:5000/hi", {
+    //     password,
+    //     login,
+    //   });
+    // }
+    // console.log("result: ", result);
+    // if (result && result.data && result.data.data) {
+    //   // dispatch(setUser("h"));
+    //   dispatch(setUser(result.data.data));
+    // }
+    await API.get("izoh", "/comments", "1").then((e) => console.log(e));
   };
+
   return (
     <Grid container height="100vh">
       <Grid
